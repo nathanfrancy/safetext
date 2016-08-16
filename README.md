@@ -26,7 +26,7 @@ If you install `safetext` globally, it will be symlinked into your system, and y
 
 ```bash
 cd /path/to/your/project
-safetext init <master password>
+st init <master password>
 ```
 
 You should see a `safetext` file in your working directory now.
@@ -37,29 +37,41 @@ Todo: Currently, there is no way to reset or change the password once the file h
 This should show you a success message. If so, your key value is now added to the store.
 
 ```bash
-safetext add <key> <value> <master password>
+st add <key> <value> <master password>
 ```
 
 ### Get contents
 This will print out all the contents of the file, decrypted. Assuming you provide the correct master password.
 
 ```bash
-safetext get-all <master password>
+st get-all <master password>
 ```
 
 ### Get value by key
 This will do the same thing as above, but will only print one value out depending on which key you give it. This is case sensitive and will error if you give it a key that isn't in the object. You obviously have to provide the correct password too.
 
 ```bash
-safetext get <key> <master password>
+st get <key> <master password>
 ```
 
 ### Remove a value by key
 This will read from the safetext file, remove the provided key value out (if it exists), and give you a success message.
 
 ```bash
-safetext remove <key> <master password>
+st remove <key> <master password>
 ```
+
+## Using in your app
+Once you've created your `safetext` file in your project, it's ready to use in your application.
+
+```
+cd /path/to/project   # Go to your project
+mkdir config          # Create a config folder to put stuff (you can do this anywhere)
+cd config
+nano pw.txt           # Create the file that will store the master password. Make sure to add this to .gitignore file and do not check in.
+```
+
+After that, paste in your 
 
 ## API
 TODO: Need to outline all the inner workings of the library, and how to actually use it in an app.

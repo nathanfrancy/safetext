@@ -1,6 +1,6 @@
 {
   "name": "safetext",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Node module allowing you to more safely store and use strings in node apps.",
   "main": "lib/index.js",
   "scripts": {
@@ -29,6 +29,6 @@
   },
   "preferGlobal": true,
   "bin": {
-    "safetext": "lib/cmd.js"
+    "st": "lib/cmd.js"
   }
 }
