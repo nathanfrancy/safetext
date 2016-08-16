@@ -29,9 +29,7 @@ cd /path/to/your/project
 safetext init <master password>
 ```
 
-You should see a `safetext` file in your working directory now.
-
-Todo: Currently, there is no way to reset or change the password once the file has been created. If you'd like to add this please fork, and submit a pull request. :)
+You should see a `safetext` file in your working directory now. Keep the password in a safe place. Once you create this file, it's almost impossible to decrypt the file without the master.
 
 ### Add a key
 This should show you a success message. If so, your key value is now added to the store.
@@ -64,14 +62,33 @@ safetext remove <key> <master password>
 ## Using in your app
 Once you've created your `safetext` file in your project, it's ready to use in your application.
 
-```
-cd /path/to/project   # Go to your project
-mkdir config          # Create a config folder to put stuff (you can do this anywhere)
-cd config
-nano pw.txt           # Create the file that will store the master password. Make sure to add this to .gitignore file and do not check in.
+You can access the contents of your file through the `safetext` api like this:
+
+```javascript
+var safetext = require('safetext');
+
+safetext.getContents('pw').then(function(safestore) {
+  console.log(safestore);
+}).catch(function(err) {
+  console.log(err);
+});
 ```
 
-After that, paste in your 
+Note: `getContents` returns a promise, so you will have to access the contents with the callback you provide to the `then` function.
+
+You can read up on how to interact with the `safetext` api below.
 
 ## API
-TODO: Need to outline all the inner workings of the library, and how to actually use it in an app.
+Please refer to the below documentation on how to interact with the `safetext` api. All of these functions return promises.
+
+### `init( <master password> )`
+
+### `getContents( <master password> )`
+
+### `getKey( <key>, <master password> )`
+
+### `writeKey( <key>, <value>, <master password> )`
+
+### `removeKey( <key>, <master password> )`
+
+### `changePassword( <master password>, <new password>, <new password confirm> )`
