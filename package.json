@@ -26,5 +26,9 @@
   "dependencies": {
     "crypto": "0.0.3",
     "fs": "0.0.2"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "safetext": "lib/cmd.js"
   }
 }
