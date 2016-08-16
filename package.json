@@ -2,8 +2,9 @@
   "name": "safetext",
   "version": "0.0.1",
   "description": "Node module allowing you to more safely store and use strings in node apps.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
+    "start": "node lib/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/nathanfrancy/safetext/issues"
   },
-  "homepage": "https://github.com/nathanfrancy/safetext#readme"
+  "homepage": "https://github.com/nathanfrancy/safetext#readme",
+  "dependencies": {
+    "crypto": "0.0.3",
+    "fs": "0.0.2"
+  }
 }
