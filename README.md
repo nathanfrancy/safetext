@@ -10,53 +10,64 @@ The whole idea here is that most of the time you have connection string variable
 
 `safetext` allows you to create one file in your current working directory, that stores all of these for you, encrypted in json format. You first initialize the file, and can interact with it (adding, getting, removing, etc.) values. Once this is done, you are free to check the file into version control, and you will have access to these keys in your application using the `safetext` library.
 
+For the command line tool for `safetext`, please visit here: [safetext-cmd](https://www.npmjs.com/package/safetext-cmd)
+
 ## What's the catch?
 The bummer about this, is you still end up with one "master" password that everything can be accessed with. You still need to handle/protect this with care as anyone with it could decrypt your safetext file and get your private data.
 
 ## Setting Up
-Install this package globally:
+Install this package into your project:
 
 ```bash
-npm install safetext --global
+npm install safetext --save
 ```
-
-If you install `safetext` globally, it will be symlinked into your system, and you'll have access to it from anywhere in your file system.
 
 ### Create the safetext file
+Initialize a safetext file with a master password.
 
-```bash
-cd /path/to/your/project
-safetext init <master password>
+```
+safetext.init( <master password> ).then(...)
 ```
 
-You should see a `safetext` file in your working directory now. Keep the password in a safe place. Once you create this file, it's almost impossible to decrypt the file without the master.
+Note: after you execute this, you should see a `safetext` file in your working directory. Keep the master password in a safe place. Once you create this file, it's almost impossible to decrypt the file without the master.
 
-### Add a key
-This should show you a success message. If so, your key value is now added to the store.
-
-```bash
-safetext add <key> <value> <master password>
-```
+## API
+Please refer to the below documentation on how to interact with the `safetext` api. All of these functions return promises.
 
 ### Get contents
-This will print out all the contents of the file, decrypted. Assuming you provide the correct master password.
 
-```bash
-safetext get-all <master password>
+```javascript
+safetext.getContents( <master password> ).then(...)
+```
+
+### Get keys
+
+```javascript
+safetext.getKeys( <master password> ).then(...)
+```
+
+### Add a key
+
+```javascript
+safetext.writeKey( <key>, <value>, <master password> ).then(...)
 ```
 
 ### Get value by key
-This will do the same thing as above, but will only print one value out depending on which key you give it. This is case sensitive and will error if you give it a key that isn't in the object. You obviously have to provide the correct password too.
 
-```bash
-safetext get <key> <master password>
+```javascript
+safetext.getKey( <key>, <master password> ).then(...)
 ```
 
 ### Remove a value by key
-This will read from the safetext file, remove the provided key value out (if it exists), and give you a success message.
 
-```bash
-safetext remove <key> <master password>
+```javascript
+safetext.removeKey( <key>, <master password> ).then(...)
+```
+
+### Change master password
+
+```javascript
+safetext.changePassword( <master password>, <new password>, <new password confirm> ).then(...)
 ```
 
 ## Using in your app
@@ -75,20 +86,3 @@ safetext.getContents('pw').then(function(safestore) {
 ```
 
 Note: `getContents` returns a promise, so you will have to access the contents with the callback you provide to the `then` function.
-
-You can read up on how to interact with the `safetext` api below.
-
-## API
-Please refer to the below documentation on how to interact with the `safetext` api. All of these functions return promises.
-
-### `init( <master password> )`
-
-### `getContents( <master password> )`
-
-### `getKey( <key>, <master password> )`
-
-### `writeKey( <key>, <value>, <master password> )`
-
-### `removeKey( <key>, <master password> )`
-
-### `changePassword( <master password>, <new password>, <new password confirm> )`
