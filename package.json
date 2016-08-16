@@ -1,0 +1,25 @@
+{
+  "name": "safetext",
+  "version": "0.0.1",
+  "description": "Node module allowing you to more safely store and use strings in node apps.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathanfrancy/safetext.git"
+  },
+  "keywords": [
+    "password",
+    "management",
+    "safe",
+    "text"
+  ],
+  "author": "Nathan Francy <nathanfrancy@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nathanfrancy/safetext/issues"
+  },
+  "homepage": "https://github.com/nathanfrancy/safetext#readme"
+}
