@@ -1,17 +1,13 @@
 var safetext = require('./../lib');
 
-safetext.init('password', { hello: 'world' }).then(function() {
-    return safetext.getContents('password');
-}).then(function(contents) {
-    console.log(contents);
-    return safetext.getKey('hello', 'password');
-}).then(function(value) {
-    console.log(value);
-    return safetext.writeKey('password', 'password', 'password');
-}).then(function() {
-    return safetext.getContents('password');
-}).then(function(contents) {
-    console.log(contents);
-}).catch(function(err) {
-    console.log(err);
-});
+// safetext.init('pw', { hello: 'world' });
+
+// var contents = safetext.getContents('pw');
+// console.log(contents);
+
+// var hello = safetext.getKey('hello', 'pw');
+
+// safetext.writeKey('password', 'password', 'pw');
+// contents = safetext.getContents('pw');
+
+// safetext.changePassword('pw', 'pw1', 'pw1');

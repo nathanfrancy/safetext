@@ -26,48 +26,54 @@ npm install safetext --save
 Initialize a safetext file with a master password.
 
 ```
-safetext.init( <master password> ).then(...)
+safetext.init( <master password> )
 ```
 
 Note: after you execute this, you should see a `safetext` file in your working directory. Keep the master password in a safe place. Once you create this file, it's almost impossible to decrypt the file without the master.
 
 ## API
-Please refer to the below documentation on how to interact with the `safetext` api. All of these functions return promises.
+Please refer to the below documentation on how to interact with the `safetext` api.
 
 ### Get contents
+Get the contents of the file decrypted, provided the master password.
 
 ```javascript
-safetext.getContents( <master password> ).then(...)
+safetext.getContents( <master password> )
 ```
 
 ### Get keys
+Gets an array of keys that are present in the file.
 
 ```javascript
-safetext.getKeys( <master password> ).then(...)
+safetext.getKeys( <master password> )
 ```
 
 ### Add a key
+Adds a key to the safetext store.
 
 ```javascript
-safetext.writeKey( <key>, <value>, <master password> ).then(...)
+safetext.writeKey( <key>, <value>, <master password> )
 ```
 
 ### Get value by key
+Gets a specific value by key.
 
 ```javascript
-safetext.getKey( <key>, <master password> ).then(...)
+safetext.getKey( <key>, <master password> )
 ```
 
 ### Remove a value by key
+Removes a specific value by key in the safetext file.
 
 ```javascript
-safetext.removeKey( <key>, <master password> ).then(...)
+safetext.removeKey( <key>, <master password> )
 ```
 
 ### Change master password
+Changes the master password of the safetext file.
 
 ```javascript
-safetext.changePassword( <master password>, <new password>, <new password confirm> ).then(...)
+safetext.changePassword( <master password>, <new password>, <new password confirm> )
 ```
 
 ## Using in your app
@@ -76,13 +82,8 @@ Once you've created your `safetext` file in your project, it's ready to use in y
 You can access the contents of your file through the `safetext` api like this:
 
 ```javascript
+// safestore.js
 var safetext = require('safetext');
-
-safetext.getContents('pw').then(function(safestore) {
-  console.log(safestore);
-}).catch(function(err) {
-  console.log(err);
-});
+var safestore = safetext.getContents('pw');
+module.exports = safestore;
 ```
-
-Note: `getContents` returns a promise, so you will have to access the contents with the callback you provide to the `then` function.
