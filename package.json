@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/nathanfrancy/safetext#readme",
   "dependencies": {
-    "crypto": "0.0.3",
-    "fs": "0.0.2"
+    "crypto": "0.0.3"
   }
 }
